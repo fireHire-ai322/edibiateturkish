@@ -1,0 +1,1263 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Türk Edebiyatı — مذكرة المراجعة</title>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0f0e17;
+    --surface: #1a1928;
+    --card: #211f35;
+    --border: #2e2b4a;
+    --accent: #e8a020;
+    --accent2: #7c5cbf;
+    --accent3: #3dbfa0;
+    --text: #e8e6f0;
+    --muted: #8a87a8;
+    --red: #e05555;
+    --green: #4dc98a;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Cairo', sans-serif;
+    line-height: 1.7;
+    min-height: 100vh;
+  }
+
+  /* Hero */
+  .hero {
+    background: linear-gradient(135deg, #1a1133 0%, #0f0e17 50%, #0d1a2e 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 60px 20px 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, #7c5cbf22 0%, transparent 70%);
+    top: -200px; left: 50%; transform: translateX(-50%);
+  }
+  .hero-badge {
+    display: inline-block;
+    background: linear-gradient(90deg, var(--accent2), var(--accent));
+    color: #fff;
+    font-size: 0.75rem;
+    padding: 4px 16px;
+    border-radius: 100px;
+    margin-bottom: 18px;
+    letter-spacing: 2px;
+    font-weight: 700;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 6vw, 3.5rem);
+    background: linear-gradient(135deg, var(--accent) 0%, #fff 60%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 10px;
+  }
+  .hero p {
+    color: var(--muted);
+    font-size: 1rem;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  /* Nav tabs */
+  .nav-wrap {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(15,14,23,0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 20px;
+  }
+  .nav-tabs {
+    display: flex;
+    gap: 4px;
+    overflow-x: auto;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 8px 0;
+    scrollbar-width: none;
+  }
+  .nav-tabs::-webkit-scrollbar { display:none; }
+  .nav-tab {
+    flex-shrink: 0;
+    padding: 7px 18px;
+    border-radius: 8px;
+    border: none;
+    background: transparent;
+    color: var(--muted);
+    font-family: 'Cairo', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+  .nav-tab:hover { background: var(--card); color: var(--text); }
+  .nav-tab.active { background: var(--accent2); color: #fff; }
+
+  /* Content */
+  .main { max-width: 900px; margin: 0 auto; padding: 30px 20px 60px; }
+
+  .section { display: none; }
+  .section.active { display: block; animation: fadeIn 0.35s ease; }
+  @keyframes fadeIn { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:translateY(0); } }
+
+  /* Section title */
+  .sec-header {
+    margin-bottom: 28px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid var(--border);
+  }
+  .sec-header h2 {
+    font-size: 1.6rem;
+    font-weight: 900;
+    margin-bottom: 4px;
+  }
+  .sec-header span { color: var(--muted); font-size: 0.85rem; }
+
+  /* Cards */
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 22px 24px;
+    margin-bottom: 18px;
+  }
+  .card h3 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: var(--accent);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .card h3 .icon { font-size: 1.2rem; }
+
+  /* Comparison table */
+  .compare-wrap { overflow-x: auto; margin-bottom: 18px; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.87rem;
+    min-width: 600px;
+  }
+  th {
+    background: var(--accent2);
+    color: #fff;
+    padding: 11px 14px;
+    text-align: center;
+    font-weight: 700;
+  }
+  th:first-child { background: var(--surface); color: var(--muted); }
+  td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+    text-align: center;
+  }
+  tr:nth-child(even) td { background: rgba(255,255,255,0.02); }
+  tr:hover td { background: rgba(124,92,191,0.08); }
+  td:first-child { text-align: right; font-weight: 600; color: var(--accent3); }
+
+  /* Poet cards */
+  .poet-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 14px;
+    margin-bottom: 18px;
+  }
+  .poet-card {
+    background: linear-gradient(135deg, var(--card), var(--surface));
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 18px;
+    position: relative;
+    overflow: hidden;
+  }
+  .poet-card::before {
+    content: '';
+    position: absolute;
+    top: 0; right: 0;
+    width: 60px; height: 60px;
+    background: radial-gradient(circle at top right, var(--accent2)33, transparent 70%);
+  }
+  .poet-card .era {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--accent);
+    margin-bottom: 6px;
+    text-transform: uppercase;
+  }
+  .poet-card h4 { font-size: 1.05rem; font-weight: 900; margin-bottom: 10px; }
+  .poet-card ul { list-style: none; }
+  .poet-card ul li {
+    font-size: 0.83rem;
+    color: var(--muted);
+    padding: 3px 0;
+    padding-right: 14px;
+    position: relative;
+  }
+  .poet-card ul li::before {
+    content: '◆';
+    position: absolute;
+    right: 0;
+    color: var(--accent3);
+    font-size: 0.6rem;
+    top: 5px;
+  }
+
+  /* Key terms pill list */
+  .pill-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+  .pill {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    padding: 5px 14px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    transition: all 0.2s;
+    cursor: default;
+  }
+  .pill:hover { background: var(--accent2); border-color: var(--accent2); color: #fff; }
+  .pill.important { border-color: var(--accent); color: var(--accent); }
+
+  /* Info list */
+  .info-list { list-style: none; }
+  .info-list li {
+    padding: 9px 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 0.9rem;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  .info-list li:last-child { border-bottom: none; }
+  .info-list li .num {
+    background: var(--accent2);
+    color: #fff;
+    font-size: 0.7rem;
+    font-weight: 700;
+    width: 22px; height: 22px;
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  /* Highlight */
+  .hl { color: var(--accent); font-weight: 700; }
+  .hl2 { color: var(--accent3); font-weight: 700; }
+  .hl3 { color: #e07cff; font-weight: 700; }
+
+  /* Alert box */
+  .alert {
+    background: rgba(232,160,32,0.08);
+    border: 1px solid rgba(232,160,32,0.3);
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin-bottom: 16px;
+    font-size: 0.88rem;
+  }
+  .alert strong { color: var(--accent); }
+
+  /* ============ QUIZ ============ */
+  #quiz-section { display: none; }
+  #quiz-section.active { display: block; }
+
+  .quiz-header {
+    text-align: center;
+    margin-bottom: 32px;
+  }
+  .quiz-header h2 { font-size: 1.8rem; font-weight: 900; margin-bottom: 6px; }
+  .quiz-header p { color: var(--muted); }
+
+  .quiz-score-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 14px 20px;
+    margin-bottom: 28px;
+    font-size: 0.9rem;
+  }
+  .score-num {
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: var(--accent);
+  }
+  .progress-wrap { flex: 1; margin: 0 20px; }
+  .progress-track {
+    background: var(--border);
+    border-radius: 100px;
+    height: 8px;
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--accent2), var(--accent));
+    border-radius: 100px;
+    transition: width 0.4s ease;
+  }
+
+  .q-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 20px;
+    transition: border-color 0.3s;
+  }
+  .q-card.answered-correct { border-color: var(--green); }
+  .q-card.answered-wrong { border-color: var(--red); }
+
+  .q-type-badge {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    padding: 3px 10px;
+    border-radius: 100px;
+    margin-bottom: 10px;
+  }
+  .q-type-badge.mcq { background: rgba(124,92,191,0.2); color: #b08dff; }
+  .q-type-badge.fill { background: rgba(61,191,160,0.2); color: var(--accent3); }
+  .q-type-badge.compare { background: rgba(232,160,32,0.2); color: var(--accent); }
+
+  .q-text {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 16px;
+    line-height: 1.6;
+  }
+
+  .options { display: grid; gap: 9px; }
+  .option-btn {
+    background: var(--surface);
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    padding: 11px 16px;
+    color: var(--text);
+    font-family: 'Cairo', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-align: right;
+    transition: all 0.18s;
+    position: relative;
+    overflow: hidden;
+  }
+  .option-btn:hover:not(:disabled) {
+    background: var(--card);
+    border-color: var(--accent2);
+    transform: translateX(-3px);
+  }
+  .option-btn:disabled { cursor: default; }
+  .option-btn.correct {
+    background: rgba(77,201,138,0.15);
+    border-color: var(--green);
+    color: var(--green);
+  }
+  .option-btn.wrong {
+    background: rgba(224,85,85,0.15);
+    border-color: var(--red);
+    color: var(--red);
+  }
+  .option-btn.reveal {
+    background: rgba(77,201,138,0.08);
+    border-color: rgba(77,201,138,0.4);
+    color: var(--green);
+  }
+
+  .q-feedback {
+    margin-top: 12px;
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    display: none;
+  }
+  .q-feedback.show { display: block; animation: fadeIn 0.25s ease; }
+  .q-feedback.correct-fb { background: rgba(77,201,138,0.12); color: var(--green); }
+  .q-feedback.wrong-fb { background: rgba(224,85,85,0.12); color: var(--red); }
+
+  /* Fill in blank */
+  .fill-input {
+    background: var(--surface);
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    padding: 10px 14px;
+    color: var(--text);
+    font-family: 'Cairo', sans-serif;
+    font-size: 0.9rem;
+    width: 100%;
+    margin-bottom: 10px;
+    outline: none;
+    transition: border-color 0.2s;
+    direction: rtl;
+  }
+  .fill-input:focus { border-color: var(--accent2); }
+  .fill-input.correct-input { border-color: var(--green); background: rgba(77,201,138,0.08); }
+  .fill-input.wrong-input { border-color: var(--red); background: rgba(224,85,85,0.08); }
+
+  .check-btn {
+    background: linear-gradient(135deg, var(--accent2), #5a3d9a);
+    border: none;
+    border-radius: 10px;
+    padding: 10px 24px;
+    color: #fff;
+    font-family: 'Cairo', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.15s, opacity 0.15s;
+  }
+  .check-btn:hover { transform: scale(1.03); }
+  .check-btn:disabled { opacity: 0.5; cursor: default; }
+
+  /* Final result */
+  .final-result {
+    display: none;
+    text-align: center;
+    padding: 40px 20px;
+  }
+  .final-result.show { display: block; animation: fadeIn 0.5s ease; }
+  .result-circle {
+    width: 120px; height: 120px;
+    border-radius: 50%;
+    background: conic-gradient(var(--accent) var(--pct), var(--border) 0);
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 20px;
+    position: relative;
+  }
+  .result-circle::before {
+    content: '';
+    position: absolute;
+    width: 90px; height: 90px;
+    background: var(--bg);
+    border-radius: 50%;
+  }
+  .result-circle span {
+    position: relative;
+    z-index: 1;
+    font-size: 1.4rem;
+    font-weight: 900;
+    color: var(--accent);
+  }
+  .result-title { font-size: 1.4rem; font-weight: 900; margin-bottom: 8px; }
+  .result-sub { color: var(--muted); margin-bottom: 24px; }
+  .retry-btn {
+    background: var(--accent);
+    border: none;
+    border-radius: 10px;
+    padding: 12px 30px;
+    color: #000;
+    font-family: 'Cairo', sans-serif;
+    font-weight: 900;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: transform 0.15s;
+  }
+  .retry-btn:hover { transform: scale(1.04); }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    .hero { padding: 40px 16px 28px; }
+    .main { padding: 20px 14px 50px; }
+    .card { padding: 16px; }
+    table { font-size: 0.78rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="hero-badge">مذكرة المراجعة • الامتحان</div>
+  <h1>Türk Edebiyatı</h1>
+  <p>ملخص شامل بالمراحل والمقارنات والأسئلة التفاعلية</p>
+</div>
+
+<div class="nav-wrap">
+  <div class="nav-tabs">
+    <button class="nav-tab active" onclick="showSection('pre-islam')">ما قبل الإسلام</button>
+    <button class="nav-tab" onclick="showSection('post-islam')">ما بعد الإسلام</button>
+    <button class="nav-tab" onclick="showSection('divan')">Divan Edebiyatı</button>
+    <button class="nav-tab" onclick="showSection('halk')">Halk Edebiyatı</button>
+    <button class="nav-tab" onclick="showSection('tanz')">Tanzimat & Sonrası</button>
+    <button class="nav-tab" onclick="showSection('compare')">🔍 مقارنة المراحل</button>
+    <button class="nav-tab" onclick="showSection('quiz-section')">🎯 أسئلة تفاعلية</button>
+  </div>
+</div>
+
+<div class="main">
+
+<!-- ======== PRE-ISLAM ======== -->
+<div id="pre-islam" class="section active">
+  <div class="sec-header">
+    <h2>İslamiyet Öncesi Türk Edebiyatı</h2>
+    <span>الأدب التركي قبل الإسلام</span>
+  </div>
+
+  <div class="card">
+    <h3><span class="icon">📖</span>لماذا ندرس تاريخ الأدب؟</h3>
+    <p>لأنه يعطينا معلومات عن أفكار ومشاعر وفهم الفن لأجدادنا الذين عاشوا في الماضي.</p>
+  </div>
+
+  <div class="card">
+    <h3><span class="icon">🗺️</span>معلومات أساسية</h3>
+    <ul class="info-list">
+      <li><div class="num">1</div><div>معنى كلمة <span class="hl">Türk</span>: نضج العمر / شعب مرتبط بالدولة / صاحب نظام</div></li>
+      <li><div class="num">2</div><div>الوطن الأول: <span class="hl">Orta Asya (Türkistan)</span> — المنطقة بين جبال أورال ألطاي والبحر الخزري</div></li>
+      <li><div class="num">3</div><div>أسباب الهجرة: اقتصادية (جفاف، ازدياد سكان) — صحية (أوبئة) — اجتماعية (صراعات) — سياسية (ضغط الصين والمغول)</div></li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3><span class="icon">🏛️</span>أول الدول التركية</h3>
+    <ul class="info-list">
+      <li><div class="num">1</div><div><span class="hl">Asya Hun Devleti</span> — أول حاكم: Tuman، ثم ابنه <span class="hl2">Mete Han</span> الذي أسس أكثر جيش منضبط في العالم</div></li>
+      <li><div class="num">2</div><div><span class="hl">Göktürk Devleti</span> — ثاني أكبر دولة تركية. أهميتها: أول دولة أُسست باسم "Türk"، أول مصادر مكتوبة، جُمع الأتراك تحت راية واحدة</div></li>
+      <li><div class="num">3</div><div><span class="hl">Orhun Uygur Devleti</span> — أول مجموعة تركية تستقر. أثّروا في المغول في التنظيم والتجارة والعلوم والأبجدية. صنعوا الورق من القطن</div></li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3><span class="icon">⛩️</span>الدين عند الأتراك القدماء</h3>
+    <div class="pill-list">
+      <span class="pill">قوى الطبيعة</span>
+      <span class="pill">تبجيل الأجداد</span>
+      <span class="pill important">Şamanizm</span>
+      <span class="pill important">Göktanrı</span>
+    </div>
+    <p style="font-size:0.88rem; color:var(--muted)">Göktanrı: إيمان بإله واحد يسكن السماء — كانوا يدفنون المتوفى مع أمتعته إيمانًا بالبعث</p>
+  </div>
+
+  <div class="card">
+    <h3><span class="icon">🪨</span>Orhun Kitabeleri</h3>
+    <ul class="info-list">
+      <li><div class="num">★</div><div>أقدم النصوص الحجرية التركية</div></li>
+      <li><div class="num">★</div><div>قرأها العالم الدنماركي <span class="hl">Thomsen</span> عام <span class="hl">1893</span></div></li>
+      <li><div class="num">★</div><div>تُعلّمنا عن حياة ومعتقدات ذلك العصر</div></li>
+    </ul>
+  </div>
+
+  <div class="alert">
+    <strong>⚠️ مهم للامتحان — أسئلة اختيار من متعدد</strong><br>
+    احفظ: Sığır = صيد | Şölen = ذبيحة | Yuğ = عزاء — وكذلك: Sav / Sagu / Koşuk / Destan
+  </div>
+
+  <div class="card">
+    <h3><span class="icon">📜</span>خصائص الأدب الشفهي — <span style="color:var(--muted); font-size:0.85rem">(مهمة للمقارنة)</span></h3>
+    <div class="compare-wrap">
+      <table>
+        <tr><th>الخاصية</th><th>التفصيل</th></tr>
+        <tr><td>الشعراء</td><td>Şaman / Ozan</td></tr>
+        <tr><td>الآلة الموسيقية</td><td>Kopuz</td></tr>
+        <tr><td>الوزن</td><td>Hece ölçüsü (عدد المقاطع)</td></tr>
+        <tr><td>وحدة النظم</td><td>Dörtlük (رباعية)</td></tr>
+        <tr><td>القافية</td><td>Yarım uyak + redif</td></tr>
+        <tr><td>الموضوعات</td><td>حب، بطولة، طبيعة، موت</td></tr>
+        <tr><td>التأثير الأجنبي</td><td>❌ لا يوجد</td></tr>
+      </table>
+    </div>
+    <div class="pill-list" style="margin-top:12px">
+      <span class="pill important">Sav = مثل شعبي</span>
+      <span class="pill important">Sagu = قصيدة عزاء (Yuğ)</span>
+      <span class="pill important">Koşuk = قصيدة صيد/احتفال</span>
+      <span class="pill important">Destan = ملحمة</span>
+    </div>
+  </div>
+</div>
+
+<!-- ======== POST-ISLAM ======== -->
+<div id="post-islam" class="section">
+  <div class="sec-header">
+    <h2>İslamiyet Sonrası Türk Edebiyatı</h2>
+    <span>الأدب التركي بعد الإسلام</span>
+  </div>
+
+  <div class="alert">
+    <strong>⚠️ الصفحة الأولى كاملة أسئلة اختيار/إكمال — كل سطر مهم!</strong>
+  </div>
+
+  <div class="card">
+    <h3><span class="icon">🌙</span>كيف انتشر الإسلام؟</h3>
+    <ul class="info-list">
+      <li><div class="num">1</div><div>انتشار الإسلام تزامن مع حكم <span class="hl">Samaniler</span></div></li>
+      <li><div class="num">2</div><div>المراكز التجارية كـ<span class="hl">Yeni-kend</span> أسهمت في إسلام الأتراك</div></li>
+      <li><div class="num">3</div><div>مدارس <span class="hl">Buhara</span> و<span class="hl">Semerkant</span> كانت تضم آلاف الطلاب لدراسة العلوم الإسلامية</div></li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3><span class="icon">📚</span>Kutadgu Bilig</h3>
+    <ul class="info-list">
+      <li><div class="num">★</div><div>أقدم أثر تركي في تركستان الشرقية</div></li>
+      <li><div class="num">★</div><div>معناه: <span class="hl">"الذي يُسعد / يليق بالملوك"</span></div></li>
+      <li><div class="num">★</div><div>نوعه: <span class="hl">Siyasetname</span> (كتاب سياسة)</div></li>
+      <li><div class="num">★</div><div>الوزن: <span class="hl">Aruz vezni</span></div></li>
+      <li><div class="num">★</div><div>يُقسّم ملكات الإنسان إلى 4: عدل، دولة، عقل، قناعة</div></li>
+      <li><div class="num">★</div><div>الفكر السائد فيه: <span class="hl2">فلسفي</span></div></li>
+      <li><div class="num">★</div><div>نسخته المكتوبة بالحروف العربية محفوظة في <span class="hl">القاهرة</span></div></li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3><span class="icon">📖</span>Atabetü'l-Hakâyık</h3>
+    <ul class="info-list">
+      <li><div class="num">★</div><div>مكتوب بـ<span class="hl">Uygur harfleri</span> — نسختان في مكتبة آيا صوفيا</div></li>
+      <li><div class="num">★</div><div>موضوعه: الأخلاق الفردية — كتاب تعليمي/نصائح</div></li>
+      <li><div class="num">★</div><div>يحتوي على: فوائد العلم وأضرار الجهل، الكرم والبخل، نصائح متنوعة</div></li>
+      <li><div class="num">★</div><div>يستشهد دائمًا بالآيات والأحاديث</div></li>
+      <li><div class="num">★</div><div>الفكر السائد فيه: <span class="hl2">ديني</span></div></li>
+    </ul>
+  </div>
+
+  <div class="compare-wrap">
+    <table>
+      <tr><th></th><th>Kutadgu Bilig</th><th>Atabetü'l-Hakâyık</th></tr>
+      <tr><td>الخط</td><td>عربي</td><td>Uygur</td></tr>
+      <tr><td>الموضوع</td><td>سياسة / دولة</td><td>أخلاق / دين</td></tr>
+      <tr><td>الفكر</td><td>فلسفي</td><td>ديني</td></tr>
+      <tr><td>الوزن</td><td>Aruz</td><td>—</td></tr>
+    </table>
+  </div>
+</div>
+
+<!-- ======== DIVAN ======== -->
+<div id="divan" class="section">
+  <div class="sec-header">
+    <h2>Divan Edebiyatı</h2>
+    <span>أدب الديوان</span>
+  </div>
+
+  <div class="alert">
+    <strong>⚠️ الجدول رقم 8 — احفظ المصطلح فقط، مش التعريف</strong>
+  </div>
+
+  <div class="card">
+    <h3><span class="icon">📋</span>لماذا سُمّي بالديوان؟</h3>
+    <p>لأن الشعراء جمعوا أعمالهم في كتاب اسمه <span class="hl">Divan</span></p>
+  </div>
+
+  <div class="card">
+    <h3><span class="icon">📊</span>خصائص شعر الديوان — <span style="color:var(--muted);font-size:0.85rem">احفظ 3 على الأقل للمقارنة</span></h3>
+    <div class="compare-wrap">
+      <table>
+        <tr><th>#</th><th>الخاصية</th><th>التفصيل</th></tr>
+        <tr><td>1</td><td>الوزن</td><td><span class="hl">Aruz ölçüsü</span></td></tr>
+        <tr><td>2</td><td>القافية</td><td>Tam ve zengin (تامة وغنية)</td></tr>
+        <tr><td>3</td><td>الفكر</td><td>الفن للفن (Sanat için sanat)</td></tr>
+        <tr><td>4</td><td>وحدة النظم</td><td><span class="hl">Beyit (بيت)</span></td></tr>
+        <tr><td>5</td><td>الكلمات</td><td>غالبها عربية وفارسية</td></tr>
+        <tr><td>6</td><td>اللغة</td><td>متزخرفة وثقيلة</td></tr>
+        <tr><td>7</td><td>الموضوعات</td><td>مجردة (معنوية)</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3><span class="icon">🏷️</span>المصطلحات — <span style="color:var(--accent3);font-size:0.85rem">احفظ المصطلح فقط!</span></h3>
+    <div class="pill-list">
+      <span class="pill important">Tevhit</span>
+      <span class="pill important">Münacat</span>
+      <span class="pill important">Naat</span>
+      <span class="pill important">Methiye</span>
+      <span class="pill important">Fahriye</span>
+      <span class="pill important">Mersiye</span>
+      <span class="pill important">Hicviye</span>
+      <span class="pill important">Gazel</span>
+      <span class="pill important">Kaside</span>
+      <span class="pill important">Matla</span>
+      <span class="pill important">Makta</span>
+    </div>
+    <div class="compare-wrap" style="margin-top:12px">
+      <table>
+        <tr><th>المصطلح</th><th>المعنى</th></tr>
+        <tr><td>Tevhit</td><td>يتحدث عن وحدانية الله</td></tr>
+        <tr><td>Münacat</td><td>التضرع لله</td></tr>
+        <tr><td>Naat</td><td>مدح النبي ﷺ</td></tr>
+        <tr><td>Methiye</td><td>مدح شخص مشهور</td></tr>
+        <tr><td>Fahriye</td><td>مدح الشاعر لنفسه</td></tr>
+        <tr><td>Mersiye</td><td>قصيدة رثاء</td></tr>
+        <tr><td>Hicviye</td><td>هجاء شخص</td></tr>
+        <tr><td>Gazel</td><td>موضوعه الحب — وحدة النظم: Beyit — أول بيت: Matla — آخر بيت: Makta</td></tr>
+        <tr><td>Kaside</td><td>مدح كبار الدين والدولة</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="poet-grid">
+    <div class="poet-card">
+      <div class="era">Divan Edebiyatı</div>
+      <h4>Mevlana</h4>
+      <ul>
+        <li>شاعر صوفي (تصوف)</li>
+        <li>كتب بالفارسية</li>
+        <li>استخدم Aruz دائمًا</li>
+        <li>أهم عمل: <span class="hl">Mesnevi</span></li>
+      </ul>
+    </div>
+    <div class="poet-card">
+      <div class="era">Divan Edebiyatı</div>
+      <h4>Fuzuli</h4>
+      <ul>
+        <li>استخدم 3 لغات: تركية أذرية، عربية، فارسية</li>
+        <li>أهم عمل: <span class="hl">Leyla ile Mecnun</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3><span class="icon">✍️</span>خصائص النثر الديواني (Divan Nesri)</h3>
+    <div class="pill-list">
+      <span class="pill">كلمات عربية وفارسية</span>
+      <span class="pill">استعارات ومجاز</span>
+      <span class="pill">موضوعات دينية</span>
+    </div>
+    <p style="font-size:0.85rem; margin-top:8px; color:var(--muted)">
+      <span class="hl2">Sade Nesir</span>: للعامة — قصص/ملاحم &nbsp;|&nbsp;
+      <span class="hl2">Orta Nesir</span>: تاريخ وعلوم &nbsp;|&nbsp;
+      <span class="hl2">Süslü Nesir</span>: أخلاق وفلسفة
+    </p>
+  </div>
+</div>
+
+<!-- ======== HALK ======== -->
+<div id="halk" class="section">
+  <div class="sec-header">
+    <h2>Halk Edebiyatı</h2>
+    <span>أدب الشعب</span>
+  </div>
+
+  <div class="card">
+    <h3><span class="icon">📊</span>خصائص أدب الشعب — <span style="color:var(--muted);font-size:0.85rem">احفظ 3 للمقارنة</span></h3>
+    <div class="compare-wrap">
+      <table>
+        <tr><th>#</th><th>الخاصية</th><th>التفصيل</th></tr>
+        <tr><td>1</td><td>الوزن</td><td><span class="hl">Hece ölçüsü</span></td></tr>
+        <tr><td>2</td><td>القافية</td><td>Yarım kafiye (ناقصة)</td></tr>
+        <tr><td>3</td><td>وحدة النظم</td><td><span class="hl">Dörtlük (رباعية)</span></td></tr>
+        <tr><td>4</td><td>الكلمات</td><td>عربية وفارسية نادرة — فقط في الكلمات الدينية</td></tr>
+        <tr><td>5</td><td>اللغة</td><td>بسيطة وواضحة (Yalın, sade)</td></tr>
+        <tr><td>6</td><td>الموضوعات</td><td>ملموسة: حب، طبيعة، فراق، شوق، موت، دين، مجتمع</td></tr>
+        <tr><td>7</td><td>أشكال النظم</td><td>Türkü, Mani, Destan</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3><span class="icon">🏷️</span>مصطلحات أدب الشعب</h3>
+    <div class="compare-wrap">
+      <table>
+        <tr><th>المصطلح</th><th>التعريف</th></tr>
+        <tr><td>Ninni</td><td>تهويدة الأمهات</td></tr>
+        <tr><td>Masal</td><td>حكاية خيالية بشخصيات خارقة، نهاية سعيدة، هدف تعليمي</td></tr>
+        <tr><td>Türkü</td><td>قصيدة تُغنى بلحن</td></tr>
+        <tr><td>Ağıt</td><td>قصيدة حزن على المتوفى</td></tr>
+        <tr><td>Efsane</td><td>قصة خيالية (خلق/تاريخية/دينية) نهاية جيدة أو سيئة</td></tr>
+        <tr><td>Destan</td><td>قصائد طويلة — بطولة، زلازل، حرائق، بخل…</td></tr>
+        <tr><td>Mani</td><td>الأسطر 1،2،4 مقفّاة — السطر 3 حر</td></tr>
+        <tr><td>Roman</td><td>نثر طويل — أحداث حقيقية أو خيالية بتحليل شخصيات</td></tr>
+        <tr><td>Hikaye</td><td>مثل الرواية لكن أقصر</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3><span class="icon">🎵</span>أنواع القافية (Uyak)</h3>
+    <div class="compare-wrap">
+      <table>
+        <tr><th>النوع</th><th>التعريف</th><th>مثال</th></tr>
+        <tr><td>Yarım uyak</td><td>تشابه صوت واحد</td><td>çeker – döker – akar</td></tr>
+        <tr><td>Tam uyak</td><td>تشابه صوتين</td><td>yordum – sordum</td></tr>
+        <tr><td>Zengin uyak</td><td>تشابه 3 أصوات أو أكثر</td><td>yolculuk – soluk</td></tr>
+        <tr><td>Redif</td><td>قافية بنفس المعنى</td><td>ağaçlar – yamaçlar (lar=redif)</td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ======== TANZIMAT & AFTER ======== -->
+<div id="tanz" class="section">
+  <div class="sec-header">
+    <h2>Batı Tesirinde Türk Edebiyatı</h2>
+    <span>الأدب التركي تحت تأثير الغرب</span>
+  </div>
+
+  <div class="card">
+    <h3><span class="icon">📜</span>Tanzimat Fermanı</h3>
+    <p>أصدره <span class="hl">Reşit Paşa</span> وزير الخارجية عام <span class="hl">1839</span> في عهد السلطان <span class="hl">Abdülmecit</span> لإصلاح مؤسسات الدولة على أسس غربية.</p>
+  </div>
+
+  <div class="card">
+    <h3><span class="icon">📊</span>مقارنة فترتَي التنظيمات</h3>
+    <div class="compare-wrap">
+      <table>
+        <tr><th></th><th>الفترة الأولى</th><th>الفترة الثانية</th></tr>
+        <tr><td>اللغة</td><td>يجب أن تكون بسيطة (لكن لم ينجحوا)</td><td>ثقيلة</td></tr>
+        <tr><td>الموضوعات</td><td>وطن، عدالة، مساواة، حرية</td><td>حب، فراق، حنين (شخصية)</td></tr>
+        <tr><td>الفكر</td><td>الأدب أداة لتوعية المجتمع</td><td>الفن للفن</td></tr>
+        <tr><td>التيارات</td><td>Klasizim + Romantizm</td><td>Realizm + Natüralizm</td></tr>
+        <tr><td>الأنواع</td><td>رواية، مسرح، صحيفة، نقد</td><td>المسرح للقراءة لا للعرض</td></tr>
+        <tr><td>الأديب</td><td>رجل دولة أيضًا</td><td>—</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="poet-grid">
+    <div class="poet-card">
+      <div class="era">Tanzimat 1. Dönem</div>
+      <h4>Şinasi</h4>
+      <ul>
+        <li>أول صحيفة خاصة: <span class="hl">Tercüman-ı Ahval</span></li>
+        <li>أول مسرحية: <span class="hl">Şair Evlenmesi</span></li>
+        <li>أول من استخدم علامات الترقيم</li>
+        <li>كلمات: عقل، حق، مدنية</li>
+      </ul>
+    </div>
+    <div class="poet-card">
+      <div class="era">Tanzimat 2. Dönem</div>
+      <h4>Recaizade M. Ekrem</h4>
+      <ul>
+        <li>شعر، رواية، قصة، مسرح</li>
+        <li>موضوعاته: حزن، مناظر الطبيعة، الموت</li>
+        <li>وفاة ابنه أثّرت في شعره</li>
+      </ul>
+    </div>
+    <div class="poet-card">
+      <div class="era">Servet-i Fünun</div>
+      <h4>Tevfik Fikret</h4>
+      <ul>
+        <li>مرحلة 1: فن للفن (حب، خيبة أمل)</li>
+        <li>مرحلة 2: مجتمع للفن (حرية، علم، إنسانية)</li>
+        <li>قرّب الشعر من النثر</li>
+        <li>تأثر بأستاذه Recaizade</li>
+      </ul>
+    </div>
+    <div class="poet-card">
+      <div class="era">Fecr-i Ati</div>
+      <h4>Ahmet Haşim</h4>
+      <ul>
+        <li>فن للفن</li>
+        <li>أبرز ممثل للرمزية (<span class="hl">Sembolizm</span>)</li>
+        <li>الموضوع: طبيعة، حب</li>
+        <li>الشعر لا يُفهم بل يُحَس</li>
+      </ul>
+    </div>
+    <div class="poet-card">
+      <div class="era">Milli Edebiyat</div>
+      <h4>Reşat Nuri Güntekin</h4>
+      <ul>
+        <li>شهرته من رواية <span class="hl">Çalıkuşu</span></li>
+        <li>صوّر مشاكل الأناضول</li>
+        <li>لغة بسيطة ودارجة</li>
+        <li>روايات عاطفية واجتماعية</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3><span class="icon">📋</span>Servet-i Fünun الخصائص الرئيسية</h3>
+    <ul class="info-list">
+      <li><div class="num">1</div><div>لغة ثقيلة، أسلوب فني، مفردات جديدة — بعيدة عن لغة الكلام</div></li>
+      <li><div class="num">2</div><div>موضوعات: حياة يومية بسيطة، تحليل نفسي (بسبب الضغوط السياسية)</div></li>
+      <li><div class="num">3</div><div>الفكر: الفن للفن — الوزن: Aruz</div></li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3><span class="icon">📋</span>Fecr-i Ati الخصائص الرئيسية</h3>
+    <ul class="info-list">
+      <li><div class="num">1</div><div>نشأ كردّ فعل على Servet-i Fünun</div></li>
+      <li><div class="num">2</div><div>نشر أول بيان أدبي في التاريخ التركي: <span class="hl">24 Şubat 1910</span></div></li>
+      <li><div class="num">3</div><div>هدفه: تقريب الأدب التركي من الأدب الغربي</div></li>
+      <li><div class="num">4</div><div>لغة شعرية غامضة — كلمات عربية وفارسية — Aruz</div></li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h3><span class="icon">📋</span>Milli Edebiyat & Cumhuriyet الخصائص</h3>
+    <ul class="info-list">
+      <li><div class="num">1</div><div>بدأت عام <span class="hl">1911</span> بمجلة <span class="hl">Genç Kalemler</span></div></li>
+      <li><div class="num">2</div><div>لغة بسيطة وسلسة — حذف الكلمات العربية والفارسية التي لها مقابل تركي</div></li>
+      <li><div class="num">3</div><div>الوزن: Hece ölçüsü — الموضوعات: تاريخ تركي، قيم ثقافية، حرب الاستقلال</div></li>
+      <li><div class="num">4</div><div>الفكر: الفن للمجتمع</div></li>
+    </ul>
+  </div>
+</div>
+
+<!-- ======== COMPARE ======== -->
+<div id="compare" class="section">
+  <div class="sec-header">
+    <h2>مقارنة شاملة بين المراحل</h2>
+    <span>ذاكر منها المقارنات المقالية</span>
+  </div>
+
+  <div class="card">
+    <h3><span class="icon">🔍</span>جدول المقارنة الكبير</h3>
+    <div class="compare-wrap">
+      <table>
+        <tr>
+          <th>الخاصية</th>
+          <th>İslamiyet Öncesi</th>
+          <th>Divan</th>
+          <th>Halk</th>
+          <th>Tanzimat 1</th>
+          <th>Milli</th>
+        </tr>
+        <tr>
+          <td>الوزن</td>
+          <td>Hece</td>
+          <td><span class="hl">Aruz</span></td>
+          <td>Hece</td>
+          <td>Aruz</td>
+          <td>Hece</td>
+        </tr>
+        <tr>
+          <td>وحدة النظم</td>
+          <td>Dörtlük</td>
+          <td><span class="hl">Beyit</span></td>
+          <td>Dörtlük</td>
+          <td>Beyit</td>
+          <td>Dörtlük</td>
+        </tr>
+        <tr>
+          <td>القافية</td>
+          <td>Yarım + redif</td>
+          <td>Tam/Zengin</td>
+          <td>Yarım</td>
+          <td>—</td>
+          <td>—</td>
+        </tr>
+        <tr>
+          <td>اللغة</td>
+          <td>بسيطة، بلا تأثير أجنبي</td>
+          <td>ثقيلة، عربية/فارسية</td>
+          <td>بسيطة، سهلة</td>
+          <td>بسيطة (هدف)</td>
+          <td>بسيطة، دارجة</td>
+        </tr>
+        <tr>
+          <td>الموضوعات</td>
+          <td>حب، بطولة، طبيعة</td>
+          <td>مجردة، صوفية</td>
+          <td>ملموسة، يومية</td>
+          <td>وطن، حرية</td>
+          <td>تاريخ، مجتمع</td>
+        </tr>
+        <tr>
+          <td>الفكر</td>
+          <td>—</td>
+          <td>فن للفن</td>
+          <td>—</td>
+          <td>فن للمجتمع</td>
+          <td>فن للمجتمع</td>
+        </tr>
+        <tr>
+          <td>أهم شاعر</td>
+          <td>الشامان/الأوزان</td>
+          <td>Mevlana / Fuzuli</td>
+          <td>—</td>
+          <td>Şinasi</td>
+          <td>Reşat N. Güntekin</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3><span class="icon">🎭</span>خط زمني للمراحل</h3>
+    <div style="position:relative; padding-right: 20px;">
+      <div style="position:absolute; right:8px; top:0; bottom:0; width:2px; background:var(--border);"></div>
+      <div style="margin-bottom:20px; padding-right:20px; position:relative;">
+        <div style="position:absolute; right:-4px; top:4px; width:10px; height:10px; border-radius:50%; background:var(--accent3);"></div>
+        <div class="hl2">İslamiyet Öncesi</div>
+        <div style="font-size:0.82rem; color:var(--muted)">شفهي ← كتابي | Hece | Dörtlük | لا تأثير أجنبي</div>
+      </div>
+      <div style="margin-bottom:20px; padding-right:20px; position:relative;">
+        <div style="position:absolute; right:-4px; top:4px; width:10px; height:10px; border-radius:50%; background:var(--accent);"></div>
+        <div class="hl">İslamiyet Sonrası</div>
+        <div style="font-size:0.82rem; color:var(--muted)">Kutadgu Bilig + Atabetü'l-Hakâyık | Aruz</div>
+      </div>
+      <div style="margin-bottom:20px; padding-right:20px; position:relative;">
+        <div style="position:absolute; right:-4px; top:4px; width:10px; height:10px; border-radius:50%; background:#b08dff;"></div>
+        <div class="hl3">Divan Edebiyatı</div>
+        <div style="font-size:0.82rem; color:var(--muted)">Aruz | Beyit | عربية/فارسية | فن للفن | Mevlana & Fuzuli</div>
+      </div>
+      <div style="margin-bottom:20px; padding-right:20px; position:relative;">
+        <div style="position:absolute; right:-4px; top:4px; width:10px; height:10px; border-radius:50%; background:var(--accent3);"></div>
+        <div class="hl2">Halk Edebiyatı</div>
+        <div style="font-size:0.82rem; color:var(--muted)">Hece | Dörtlük | بسيطة | موضوعات ملموسة</div>
+      </div>
+      <div style="margin-bottom:20px; padding-right:20px; position:relative;">
+        <div style="position:absolute; right:-4px; top:4px; width:10px; height:10px; border-radius:50%; background:var(--accent);"></div>
+        <div class="hl">Tanzimat (1839)</div>
+        <div style="font-size:0.82rem; color:var(--muted)">فترة 1: مجتمع + Klasizim | فترة 2: فن للفن + Realizm</div>
+      </div>
+      <div style="margin-bottom:20px; padding-right:20px; position:relative;">
+        <div style="position:absolute; right:-4px; top:4px; width:10px; height:10px; border-radius:50%; background:#b08dff;"></div>
+        <div class="hl3">Servet-i Fünun → Fecr-i Ati</div>
+        <div style="font-size:0.82rem; color:var(--muted)">Aruz | ثقيلة | Tevfik Fikret | Ahmet Haşim (رمزية)</div>
+      </div>
+      <div style="padding-right:20px; position:relative;">
+        <div style="position:absolute; right:-4px; top:4px; width:10px; height:10px; border-radius:50%; background:var(--accent3);"></div>
+        <div class="hl2">Milli Edebiyat (1911)</div>
+        <div style="font-size:0.82rem; color:var(--muted)">Hece | بسيطة | مجتمع | Reşat Nuri Güntekin</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ======== QUIZ ======== -->
+<div id="quiz-section" class="section">
+  <div class="quiz-header">
+    <h2>🎯 أسئلة تفاعلية</h2>
+    <p>اختبر نفسك — النتيجة فورية</p>
+  </div>
+
+  <div class="quiz-score-bar">
+    <div>
+      <div style="font-size:0.78rem;color:var(--muted);margin-bottom:2px">النتيجة</div>
+      <div class="score-num" id="score-display">0 / 0</div>
+    </div>
+    <div class="progress-wrap">
+      <div style="font-size:0.78rem;color:var(--muted);margin-bottom:5px;text-align:center" id="progress-label">ابدأ بالإجابة</div>
+      <div class="progress-track">
+        <div class="progress-fill" id="progress-fill" style="width:0%"></div>
+      </div>
+    </div>
+    <div>
+      <button class="check-btn" onclick="resetQuiz()" style="padding:8px 16px;font-size:0.8rem">🔄 إعادة</button>
+    </div>
+  </div>
+
+  <div id="questions-container"></div>
+
+  <div class="final-result" id="final-result">
+    <div class="result-circle" id="result-circle">
+      <span id="result-pct">0%</span>
+    </div>
+    <div class="result-title" id="result-title"></div>
+    <div class="result-sub" id="result-sub"></div>
+    <button class="retry-btn" onclick="resetQuiz()">🔄 حاول مرة أخرى</button>
+  </div>
+</div>
+
+</div><!-- end main -->
+
+<script>
+// ===== NAV =====
+function showSection(id) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  const tabs = document.querySelectorAll('.nav-tab');
+  const labels = ['pre-islam','post-islam','divan','halk','tanz','compare','quiz-section'];
+  const idx = labels.indexOf(id);
+  if (idx !== -1) tabs[idx].classList.add('active');
+}
+
+// ===== QUIZ DATA =====
+const questions = [
+  // MCQ
+  { type:'mcq', q:'ما معنى كلمة Kutadgu Bilig؟', opts:['الذي يُسعد / يليق بالملوك','كتاب الأخلاق','سجل الأبطال','الإله الأعلى'], ans:0, hint:'هو كتاب سياسة يُعلّم الحكام.' },
+  { type:'mcq', q:'من قرأ Orhun Kitabeleri عام 1893؟', opts:['Thomsen','Mete Han','Fuzuli','Şinasi'], ans:0, hint:'عالم دنماركي.' },
+  { type:'mcq', q:'ما وحدة النظم في شعر الديوان؟', opts:['Beyit','Dörtlük','Mısra','Kıta'], ans:0, hint:'كل بيت مستقل بذاته.' },
+  { type:'mcq', q:'ما وزن الشعر في Halk Edebiyatı؟', opts:['Hece ölçüsü','Aruz ölçüsü','Serbest','Mani'], ans:0, hint:'يعتمد على عدد المقاطع.' },
+  { type:'mcq', q:'من كتب أول صحيفة خاصة في الأدب التركي؟', opts:['Şinasi','Fuzuli','Mevlana','Recaizade'], ans:0, hint:'اسم الصحيفة Tercüman-ı Ahval.' },
+  { type:'mcq', q:'ما الفكر السائد في Kutadgu Bilig؟', opts:['فلسفي','ديني','رومانسي','قومي'], ans:0, hint:'يختلف عن Atabetü\'l-Hakâyık.' },
+  { type:'mcq', q:'ما الفكر السائد في Atabetü\'l-Hakâyık؟', opts:['ديني','فلسفي','سياسي','أسطوري'], ans:0, hint:'يستشهد دائمًا بالآيات والأحاديث.' },
+  { type:'mcq', q:'ما التيار الأدبي الذي نشأ ردًّا على Servet-i Fünun؟', opts:['Fecr-i Ati','Tanzimat','Milli Edebiyat','Divan'], ans:0, hint:'أصدر أول بيان أدبي في التاريخ التركي.' },
+  { type:'mcq', q:'من أبرز ممثلي Sembolizm في الأدب التركي؟', opts:['Ahmet Haşim','Tevfik Fikret','Fuzuli','Şinasi'], ans:0, hint:'ينتمي إلى Fecr-i Ati.' },
+  { type:'mcq', q:'ما اسم الرواية التي اشتُهر بها Reşat Nuri Güntekin؟', opts:['Çalıkuşu','Mesnevi','Leyla ile Mecnun','Şair Evlenmesi'], ans:0, hint:'كُتبت أصلًا كمسرحية.' },
+  { type:'mcq', q:'ما آلة الموسيقى المصاحبة للشعر في الأدب الشفهي؟', opts:['Kopuz','Ud','Saz','Tanbur'], ans:0, hint:'يحملها الشاعر الأوزان.' },
+  { type:'mcq', q:'أيّ مصطلح يعني مدح الشاعر لنفسه في شعر الديوان؟', opts:['Fahriye','Methiye','Naat','Mersiye'], ans:0, hint:'الفخر.' },
+  { type:'mcq', q:'ما اسم الشعر الذي يُقال في مراسم الحزن (Yuğ) في الأدب الشفهي؟', opts:['Sagu','Koşuk','Sav','Destan'], ans:0, hint:'مرتبط بالوفاة.' },
+  { type:'mcq', q:'ما التيار الأدبي السائد في روايات الفترة الثانية من التنظيمات؟', opts:['Realizm','Klasizim','Romantizm','Sembolizm'], ans:0, hint:'يعتمد على الواقعية.' },
+  { type:'mcq', q:'في أي عام صدر بيان Fecr-i Ati؟', opts:['1910','1839','1893','1911'], ans:0, hint:'24 Şubat.' },
+  { type:'mcq', q:'أي الدول التركية كانت أول من أُسّست باسم "Türk"؟', opts:['Göktürk Devleti','Asya Hun','Uygur','Karahanlı'], ans:0, hint:'ثاني أكبر دولة تركية.' },
+  { type:'mcq', q:'ما نوع القافية التي تعتمد على تشابه صوت واحد فقط؟', opts:['Yarım uyak','Tam uyak','Zengin uyak','Redif'], ans:0, hint:'مثال: çeker – döker.' },
+  { type:'mcq', q:'ما اسم احتفالات الصيد في الأدب الشفهي؟', opts:['Sığır','Şölen','Yuğ','Balbal'], ans:0, hint:'مرتبط بالصيد.' },
+  // Fill
+  { type:'fill', q:'يُسمّى الديوان بهذا الاسم لأن الشعراء جمعوا أعمالهم في كتاب اسمه ____', ans:'Divan', alts:['ديوان','divan'], hint:'نفس اسم المرحلة.' },
+  { type:'fill', q:'الشعر الذي يُرثى به الميت في أدب الشعب يسمى ____', ans:'Ağıt', alts:['agit','اغيت'], hint:'مثل قصيدة العزاء.' },
+  { type:'fill', q:'أول وطن للأتراك كان في منطقة تسمى ____ أو تركستان', ans:'Orta Asya', alts:['orta asya','وسط آسيا','وسط اسيا'], hint:'بين جبال ألطاي والبحر الخزري.' },
+  { type:'fill', q:'كتب Mevlana أعماله باللغة ____', ans:'Farsça', alts:['فارسية','الفارسية','فارسچه','farsca'], hint:'ليست التركية.' },
+  { type:'fill', q:'بدأت Milli Edebiyat عام ____ بمجلة Genç Kalemler', ans:'1911', alts:[], hint:'قريب من الحرب العالمية الأولى.' },
+  { type:'fill', q:'مصطلح ____ في شعر الديوان يعني التضرع إلى الله', ans:'Münacat', alts:['مناجات','munacat'], hint:'يبدأ بـ M.' },
+  { type:'fill', q:'Tanzimat Fermanı صدر عام ____', ans:'1839', alts:[], hint:'في عهد عبد المجيد.' },
+];
+
+let answered = [];
+let correct = 0;
+let answeredCount = 0;
+
+function buildQuiz() {
+  answered = new Array(questions.length).fill(false);
+  correct = 0;
+  answeredCount = 0;
+  updateScore();
+  const container = document.getElementById('questions-container');
+  container.innerHTML = '';
+  document.getElementById('final-result').classList.remove('show');
+
+  questions.forEach((q, i) => {
+    const card = document.createElement('div');
+    card.className = 'q-card';
+    card.id = `q-${i}`;
+
+    const badge = q.type === 'mcq' ? `<span class="q-type-badge mcq">اختيار من متعدد</span>` :
+                  q.type === 'fill' ? `<span class="q-type-badge fill">أكمل الفراغ</span>` :
+                  `<span class="q-type-badge compare">مقارنة</span>`;
+
+    let body = '';
+    if (q.type === 'mcq') {
+      body = `<div class="options">` + q.opts.map((opt, oi) =>
+        `<button class="option-btn" id="opt-${i}-${oi}" onclick="checkMCQ(${i},${oi})">${opt}</button>`
+      ).join('') + `</div>`;
+    } else if (q.type === 'fill') {
+      body = `<input class="fill-input" id="fill-${i}" placeholder="اكتب إجابتك هنا..." />
+              <button class="check-btn" id="check-${i}" onclick="checkFill(${i})">تحقق ✓</button>`;
+    }
+
+    card.innerHTML = `
+      ${badge}
+      <div class="q-text">${i+1}. ${q.q}</div>
+      ${body}
+      <div class="q-feedback" id="fb-${i}"></div>
+    `;
+    container.appendChild(card);
+
+    // Enter key for fill
+    if (q.type === 'fill') {
+      setTimeout(() => {
+        const inp = document.getElementById(`fill-${i}`);
+        if (inp) inp.addEventListener('keydown', e => { if (e.key === 'Enter') checkFill(i); });
+      }, 100);
+    }
+  });
+}
+
+function checkMCQ(qi, chosen) {
+  if (answered[qi]) return;
+  answered[qi] = true;
+  const q = questions[qi];
+  const isCorrect = chosen === q.ans;
+  if (isCorrect) correct++;
+  answeredCount++;
+
+  q.opts.forEach((_, oi) => {
+    const btn = document.getElementById(`opt-${qi}-${oi}`);
+    btn.disabled = true;
+    if (oi === q.ans) btn.classList.add('correct');
+    else if (oi === chosen && !isCorrect) btn.classList.add('wrong');
+  });
+
+  const fb = document.getElementById(`fb-${qi}`);
+  fb.classList.add('show');
+  if (isCorrect) {
+    fb.className = 'q-feedback show correct-fb';
+    fb.textContent = '✅ إجابة صحيحة!';
+    document.getElementById(`q-${qi}`).classList.add('answered-correct');
+  } else {
+    fb.className = 'q-feedback show wrong-fb';
+    fb.textContent = `❌ خطأ — الإجابة: ${q.opts[q.ans]}  |  ${q.hint}`;
+    document.getElementById(`q-${qi}`).classList.add('answered-wrong');
+  }
+
+  updateScore();
+  checkFinished();
+}
+
+function checkFill(qi) {
+  if (answered[qi]) return;
+  const q = questions[qi];
+  const inp = document.getElementById(`fill-${qi}`);
+  const val = inp.value.trim().toLowerCase();
+  const correctVal = q.ans.toLowerCase();
+  const alts = (q.alts || []).map(a => a.toLowerCase());
+  const isCorrect = val === correctVal || alts.includes(val);
+
+  answered[qi] = true;
+  if (isCorrect) correct++;
+  answeredCount++;
+
+  inp.disabled = true;
+  document.getElementById(`check-${qi}`).disabled = true;
+  inp.classList.add(isCorrect ? 'correct-input' : 'wrong-input');
+
+  const fb = document.getElementById(`fb-${qi}`);
+  fb.classList.add('show');
+  if (isCorrect) {
+    fb.className = 'q-feedback show correct-fb';
+    fb.textContent = '✅ إجابة صحيحة!';
+    document.getElementById(`q-${qi}`).classList.add('answered-correct');
+  } else {
+    fb.className = 'q-feedback show wrong-fb';
+    fb.textContent = `❌ خطأ — الإجابة الصحيحة: ${q.ans}  |  ${q.hint}`;
+    document.getElementById(`q-${qi}`).classList.add('answered-wrong');
+  }
+
+  updateScore();
+  checkFinished();
+}
+
+function updateScore() {
+  document.getElementById('score-display').textContent = `${correct} / ${answeredCount}`;
+  const pct = questions.length > 0 ? Math.round((answeredCount / questions.length) * 100) : 0;
+  document.getElementById('progress-fill').style.width = pct + '%';
+  document.getElementById('progress-label').textContent = answeredCount === 0 ? 'ابدأ بالإجابة' : `${answeredCount} من ${questions.length} سؤال`;
+}
+
+function checkFinished() {
+  if (answeredCount < questions.length) return;
+  const pct = Math.round((correct / questions.length) * 100);
+  const circle = document.getElementById('result-circle');
+  circle.style.setProperty('--pct', `${pct}%`);
+  document.getElementById('result-pct').textContent = pct + '%';
+
+  let title, sub;
+  if (pct >= 90) { title = '🏆 ممتاز! مستعد للامتحان'; sub = `أجبت صح على ${correct} من ${questions.length} سؤال`; }
+  else if (pct >= 70) { title = '👍 جيد جدًا!'; sub = `راجع الأسئلة الغلط وكرر المذاكرة`; }
+  else if (pct >= 50) { title = '📚 محتاج مراجعة أكثر'; sub = `ركّز على جداول المقارنة والمصطلحات`; }
+  else { title = '💪 لازم تذاكر تاني'; sub = `ابدأ من جداول الخصائص والشعراء`; }
+
+  document.getElementById('result-title').textContent = title;
+  document.getElementById('result-sub').textContent = sub;
+  setTimeout(() => document.getElementById('final-result').classList.add('show'), 300);
+}
+
+function resetQuiz() {
+  buildQuiz();
+  document.getElementById('final-result').classList.remove('show');
+  window.scrollTo({ top: document.getElementById('quiz-section').offsetTop - 80, behavior: 'smooth' });
+}
+
+// Init
+buildQuiz();
+</script>
+</body>
+</html>
