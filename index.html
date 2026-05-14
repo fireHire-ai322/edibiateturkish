@@ -855,43 +855,150 @@ function show(id){
 
 // ── QUIZ DATA — ALL TURKISH ──
 const QS = [
-  // MCQ
-  {t:'mcq', q:'Türklerin ilk ana yurdunun adı nedir?', o:['Orta Asya (Türkistan)','Moğolistan','Çin','Arabistan'], a:0, h:'Ural Altay Dağları ile Hazar Denizi arası.'},
-  {t:'mcq', q:'"Türk" kelimesinin anlamlarından biri aşağıdakilerden hangisidir?', o:['Olgunluk çağı','Savaşçı halk','Doğu kavmi','Göçebe kültür'], a:0, h:'Aynı zamanda "nizama sahip halk" anlamına da gelir.'},
-  {t:'mcq', q:'Orhun Kitabeleri\'ni 1893 yılında kim okumuştur?', o:['Danimarkalı bilgin Thomsen','Fransız araştırmacı Leroi','Alman tarihçi Weber','Rus dilbilimci Radloff'], a:0, h:'Danimarkalı bir bilgindir.'},
-  {t:'mcq', q:'Sözlü edebiyatta şiirler hangi müzik aletiyle söylenirdi?', o:['Kopuz','Ud','Saz','Kanun'], a:0, h:'Şaman ve Ozanların kullandığı alettir.'},
-  {t:'mcq', q:'Sözlü edebiyattaki "Yuğ" töreni nedir?', o:['Yas töreni','Av töreni','Kurban töreni','Evlenme töreni'], a:0, h:'Sagu bu törende söylenir.'},
-  {t:'mcq', q:'Sözlü edebiyatta "Sığır" töreni nedir?', o:['Av töreni','Yas töreni','Doğum töreni','Savaş töreni'], a:0, h:'Koşuk bu törende söylenir.'},
-  {t:'mcq', q:'Sözlü edebiyatta atasözünün karşılığı olan tür hangisidir?', o:['Sav','Sagu','Koşuk','Destan'], a:0, h:'En kısa sözlü edebiyat türüdür.'},
-  {t:'mcq', q:'İslamiyet öncesi Türk şiirinde kullanılan ölçü hangisidir?', o:['Hece ölçüsü','Aruz ölçüsü','Serbest ölçü','Mani ölçüsü'], a:0, h:'Hecelerin sayısına dayanır.'},
-  {t:'mcq', q:'İslamiyet öncesi şiirde nazım birimi nedir?', o:['Dörtlük','Beyit','Mısra','Kıta'], a:0, h:'4 dizeden oluşur.'},
-  {t:'mcq', q:'Kutadgu Bilig\'in anlamı nedir?', o:['Saadet veren / padişahlara lâyık','Gerçeklerin eşiği','Bilgi kitabı','Türk tarihi'], a:0, h:'Bir siyasetname türünde yazılmıştır.'},
-  {t:'mcq', q:'Kutadgu Bilig\'de hâkim olan fikir hangisidir?', o:['Felsefî','Dinî','Romantik','Milliyetçi'], a:0, h:'Atabetü\'l-Hakâyık\'ten farklıdır.'},
-  {t:'mcq', q:'Atabetü\'l-Hakâyık hangi harflerle yazılmıştır?', o:['Uygur harfleri','Arap harfleri','Latin harfleri','Göktürk harfleri'], a:0, h:'Kutadgu Bilig Arap harfleriyle yazılmıştır.'},
-  {t:'mcq', q:'Atabetü\'l-Hakâyık\'te hâkim olan fikir hangisidir?', o:['Dinî','Felsefî','Siyasî','Destanî'], a:0, h:'Ayet ve hadislere sık atıfta bulunur.'},
-  {t:'mcq', q:'Divan edebiyatında en çok kullanılan ölçü hangisidir?', o:['Aruz ölçüsü','Hece ölçüsü','Serbest ölçü','Dörtlük ölçüsü'], a:0, h:'Arap ve Fars edebiyatından alınmıştır.'},
-  {t:'mcq', q:'Divan edebiyatında nazım birimi nedir?', o:['Beyit','Dörtlük','Mısra','Bent'], a:0, h:'İki dizeden oluşur.'},
-  {t:'mcq', q:'Gazelin ilk beytine ne denir?', o:['Matla','Makta','Fahriye','Mersiye'], a:0, h:'Son beyit "makta" dır.'},
-  {t:'mcq', q:'Şairin kendini övdüğü Divan şiiri türü hangisidir?', o:['Fahriye','Methiye','Naat','Mersiye'], a:0, h:'"Fahir" kelimesiyle ilgilidir.'},
-  {t:'mcq', q:'Divan şiirinde Allah\'a yalvarmak için yazılan tür hangisidir?', o:['Münacat','Tevhit','Naat','Methiye'], a:0, h:'Münacaat = yakarış demektir.'},
-  {t:'mcq', q:'Mevlana eserlerini hangi dilde yazmıştır?', o:['Farsça','Türkçe','Arapça','Azeri Türkçesi'], a:0, h:'Divan şairidir ve tasavvuf anlayışına sahiptir.'},
-  {t:'mcq', q:'Fuzuli\'nin ünlü eseri hangisidir?', o:['Leyla ile Mecnun','Mesnevi','Çalıkuşu','Şair Evlenmesi'], a:0, h:'Mesnevi Mevlana\'nın eseridir.'},
-  {t:'mcq', q:'Halk edebiyatında nazım birimi nedir?', o:['Dörtlük','Beyit','Mısra','Kıta'], a:0, h:'Divan edebiyatından farklıdır.'},
-  {t:'mcq', q:'Türkü nasıl tanımlanır?', o:['Ezgiyle / besteyle söylenen şiir','Cenaze şiiri','Atasözü karşılığı','Yas şiiri'], a:0, h:'Besteli bir türdür.'},
-  {t:'mcq', q:'Manide kaçıncı dize serbesttir?', o:['3. dize','1. dize','2. dize','4. dize'], a:0, h:'Diğer dizeler birbiriyle uyaklıdır.'},
-  {t:'mcq', q:'Halk edebiyatında birinin ölümünden duyulan acıyı dile getiren şiire ne denir?', o:['Ağıt','Türkü','Mani','Ninni'], a:0, h:'Divan edebiyatındaki mersiyenin halk edebiyatındaki karşılığıdır.'},
-  {t:'mcq', q:'"çeker – döker – akar" dizelerindeki kafiye türü hangisidir?', o:['Yarım uyak','Tam uyak','Zengin uyak','Redif'], a:0, h:'Tek ses benzerliğine dayanır.'},
-  {t:'mcq', q:'"ağaçlar – yamaçlar" kelimelerinde "lar" eki hangi işlevi görür?', o:['Redif','Yarım uyak','Tam uyak','Zengin uyak'], a:0, h:'Aynı görevli ektir.'},
-  {t:'mcq', q:'Tanzimat Fermanı hangi yılda ilan edilmiştir?', o:['1839','1910','1911','1893'], a:0, h:'Abdülmecit döneminde Reşit Paşa tarafından yayımlandı.'},
-  {t:'mcq', q:'Türk edebiyatında ilk özel gazeteyi kim çıkarmıştır?', o:['Şinasi','Fuzuli','Tevfik Fikret','Ahmet Haşim'], a:0, h:'Gazete adı: Tercüman-ı Ahval.'},
-  {t:'mcq', q:'Türk edebiyatında ilk piyesi kim yazmıştır?', o:['Şinasi','Recaizade M. Ekrem','Tevfik Fikret','Reşat Nuri Güntekin'], a:0, h:'Piyes adı: Şair Evlenmesi.'},
-  {t:'mcq', q:'Tanzimat 1. döneminde hâkim anlayış hangisidir?', o:['Toplum için sanat','Sanat için sanat','Sembolizm','Realizm'], a:0, h:'Edebiyat, toplumu bilinçlendirmek için bir araçtır.'},
-  {t:'mcq', q:'Servet-i Fünun döneminin önemli şairi kimdir?', o:['Tevfik Fikret','Şinasi','Ahmet Haşim','Reşat Nuri Güntekin'], a:0, h:'Şiiri nesre yaklaştırmıştır.'},
-  {t:'mcq', q:'Fecr-i Ati beyannamesi hangi tarihte yayımlanmıştır?', o:['24 Şubat 1910','1 Ocak 1839','15 Mart 1911','3 Mayıs 1893'], a:0, h:'Türk edebiyatında ilk edebî bildiridir.'},
-  {t:'mcq', q:'Sembolizmin en önemli temsilcisi kimdir?', o:['Ahmet Haşim','Tevfik Fikret','Şinasi','Fuzuli'], a:0, h:'Fecr-i Ati dönemi şairidir.'},
-  {t:'mcq', q:'Millî Edebiyat hangi dergiyle başlamıştır?', o:['Genç Kalemler','Servet-i Fünun','Tanzimat','Fecr-i Ati'], a:0, h:'1911 yılında yayımlanmıştır.'},
-  {t:'mcq', q:'Reşat Nuri Güntekin hangi romanıyla tanınmıştır?', o:['Çalıkuşu','Mesnevi','Leyla ile Mecnun','Şair Evlenmesi'], a:0, h:'Anadolu\'nun dertlerini anlatan bir romandır.'},
-  {t:'mcq', q:'Millî Edebiyat döneminde hâkim ölçü hangisidir?', o:['Hece ölçüsü','Aruz ölçüsü','Serbest ölçü','Mani'], a:0, h:'Divan edebiyatının aksine tercih edilmiştir.'},
+  // MCQ — correct answer distributed across A(0) B(1) C(2) D(3)
+  {t:'mcq', q:'Türklerin ilk ana yurdunun adı nedir?',
+    o:['Orta Asya (Türkistan)','Moğolistan','Çin','Arabistan'], a:0,
+    h:'Ural Altay Dağları ile Hazar Denizi arası.'},
+
+  {t:'mcq', q:'"Türk" kelimesinin doğru anlamı aşağıdakilerden hangisidir?',
+    o:['Savaşçı halk','Olgunluk çağı / nizama sahip halk','Doğu kavmi','Göçebe kültür'], a:1,
+    h:'Aynı zamanda "nizama sahip halk" anlamına da gelir.'},
+
+  {t:'mcq', q:'Orhun Kitabeleri\'ni 1893 yılında kim okumuştur?',
+    o:['Fransız araştırmacı Leroi','Alman tarihçi Weber','Danimarkalı bilgin Thomsen','Rus dilbilimci Radloff'], a:2,
+    h:'Danimarkalı bir bilgindir.'},
+
+  {t:'mcq', q:'Sözlü edebiyatta şiirler hangi müzik aletiyle söylenirdi?',
+    o:['Ud','Saz','Kanun','Kopuz'], a:3,
+    h:'Şaman ve Ozanların kullandığı alettir.'},
+
+  {t:'mcq', q:'Sözlü edebiyattaki "Yuğ" töreni nedir?',
+    o:['Yas töreni','Av töreni','Kurban töreni','Evlenme töreni'], a:0,
+    h:'Sagu bu törende söylenir.'},
+
+  {t:'mcq', q:'Sözlü edebiyatta "Sığır" töreni nedir?',
+    o:['Yas töreni','Av töreni','Doğum töreni','Savaş töreni'], a:1,
+    h:'Koşuk bu törende söylenir.'},
+
+  {t:'mcq', q:'Sözlü edebiyatta atasözünün karşılığı olan tür hangisidir?',
+    o:['Sagu','Koşuk','Sav','Destan'], a:2,
+    h:'En kısa sözlü edebiyat türüdür.'},
+
+  {t:'mcq', q:'İslamiyet öncesi Türk şiirinde kullanılan ölçü hangisidir?',
+    o:['Aruz ölçüsü','Serbest ölçü','Mani ölçüsü','Hece ölçüsü'], a:3,
+    h:'Hecelerin sayısına dayanır.'},
+
+  {t:'mcq', q:'İslamiyet öncesi şiirde nazım birimi nedir?',
+    o:['Dörtlük','Beyit','Mısra','Kıta'], a:0,
+    h:'4 dizeden oluşur.'},
+
+  {t:'mcq', q:'Kutadgu Bilig\'in anlamı nedir?',
+    o:['Gerçeklerin eşiği','Saadet veren / padişahlara lâyık','Bilgi kitabı','Türk tarihi'], a:1,
+    h:'Bir siyasetname türünde yazılmıştır.'},
+
+  {t:'mcq', q:'Kutadgu Bilig\'de hâkim olan fikir hangisidir?',
+    o:['Dinî','Romantik','Felsefî','Milliyetçi'], a:2,
+    h:'Atabetü\'l-Hakâyık\'ten farklıdır.'},
+
+  {t:'mcq', q:'Atabetü\'l-Hakâyık hangi harflerle yazılmıştır?',
+    o:['Arap harfleri','Latin harfleri','Göktürk harfleri','Uygur harfleri'], a:3,
+    h:'Kutadgu Bilig Arap harfleriyle yazılmıştır.'},
+
+  {t:'mcq', q:'Atabetü\'l-Hakâyık\'te hâkim olan fikir hangisidir?',
+    o:['Dinî','Felsefî','Siyasî','Destanî'], a:0,
+    h:'Ayet ve hadislere sık atıfta bulunur.'},
+
+  {t:'mcq', q:'Divan edebiyatında en çok kullanılan ölçü hangisidir?',
+    o:['Hece ölçüsü','Aruz ölçüsü','Serbest ölçü','Dörtlük ölçüsü'], a:1,
+    h:'Arap ve Fars edebiyatından alınmıştır.'},
+
+  {t:'mcq', q:'Divan edebiyatında nazım birimi nedir?',
+    o:['Dörtlük','Mısra','Beyit','Bent'], a:2,
+    h:'İki dizeden oluşur.'},
+
+  {t:'mcq', q:'Gazelin ilk beytine ne denir?',
+    o:['Makta','Fahriye','Mersiye','Matla'], a:3,
+    h:'Son beyite "makta" denir.'},
+
+  {t:'mcq', q:'Şairin kendini övdüğü Divan şiiri türü hangisidir?',
+    o:['Fahriye','Methiye','Naat','Mersiye'], a:0,
+    h:'"Fahir" kelimesiyle ilgilidir.'},
+
+  {t:'mcq', q:'Divan şiirinde Allah\'a yalvarmak için yazılan tür hangisidir?',
+    o:['Tevhit','Münacat','Naat','Methiye'], a:1,
+    h:'Münacaat = yakarış demektir.'},
+
+  {t:'mcq', q:'Mevlana eserlerini hangi dilde yazmıştır?',
+    o:['Türkçe','Arapça','Farsça','Azeri Türkçesi'], a:2,
+    h:'Divan şairidir ve tasavvuf anlayışına sahiptir.'},
+
+  {t:'mcq', q:'Fuzuli\'nin ünlü eseri hangisidir?',
+    o:['Mesnevi','Çalıkuşu','Şair Evlenmesi','Leyla ile Mecnun'], a:3,
+    h:'Mesnevi Mevlana\'nın eseridir.'},
+
+  {t:'mcq', q:'Halk edebiyatında nazım birimi nedir?',
+    o:['Dörtlük','Beyit','Mısra','Kıta'], a:0,
+    h:'Divan edebiyatından farklıdır.'},
+
+  {t:'mcq', q:'Türkü nasıl tanımlanır?',
+    o:['Cenaze şiiri','Ezgiyle / besteyle söylenen şiir','Atasözü karşılığı','Yas şiiri'], a:1,
+    h:'Besteli bir türdür.'},
+
+  {t:'mcq', q:'Manide kaçıncı dize serbesttir?',
+    o:['1. dize','2. dize','3. dize','4. dize'], a:2,
+    h:'Diğer dizeler birbiriyle uyaklıdır.'},
+
+  {t:'mcq', q:'Halk edebiyatında birinin ölümünden duyulan acıyı dile getiren şiire ne denir?',
+    o:['Türkü','Mani','Ninni','Ağıt'], a:3,
+    h:'Divan edebiyatındaki mersiyenin halk edebiyatındaki karşılığıdır.'},
+
+  {t:'mcq', q:'"çeker – döker – akar" dizelerindeki kafiye türü hangisidir?',
+    o:['Yarım uyak','Tam uyak','Zengin uyak','Redif'], a:0,
+    h:'Tek ses benzerliğine dayanır.'},
+
+  {t:'mcq', q:'"ağaçlar – yamaçlar" kelimelerinde "lar" eki hangi işlevi görür?',
+    o:['Yarım uyak','Redif','Tam uyak','Zengin uyak'], a:1,
+    h:'Aynı görevli ektir.'},
+
+  {t:'mcq', q:'Tanzimat Fermanı hangi yılda ilan edilmiştir?',
+    o:['1910','1911','1839','1893'], a:2,
+    h:'Abdülmecit döneminde Reşit Paşa tarafından yayımlandı.'},
+
+  {t:'mcq', q:'Türk edebiyatında ilk özel gazeteyi kim çıkarmıştır?',
+    o:['Fuzuli','Tevfik Fikret','Ahmet Haşim','Şinasi'], a:3,
+    h:'Gazete adı: Tercüman-ı Ahval.'},
+
+  {t:'mcq', q:'Türk edebiyatında ilk piyesi kim yazmıştır?',
+    o:['Şinasi','Recaizade M. Ekrem','Tevfik Fikret','Reşat Nuri Güntekin'], a:0,
+    h:'Piyes adı: Şair Evlenmesi.'},
+
+  {t:'mcq', q:'Tanzimat 1. döneminde hâkim anlayış hangisidir?',
+    o:['Sanat için sanat','Toplum için sanat','Sembolizm','Realizm'], a:1,
+    h:'Edebiyat, toplumu bilinçlendirmek için bir araçtır.'},
+
+  {t:'mcq', q:'Servet-i Fünun döneminin önemli şairi kimdir?',
+    o:['Şinasi','Ahmet Haşim','Tevfik Fikret','Reşat Nuri Güntekin'], a:2,
+    h:'Şiiri nesre yaklaştırmıştır.'},
+
+  {t:'mcq', q:'Fecr-i Ati beyannamesi hangi tarihte yayımlanmıştır?',
+    o:['1 Ocak 1839','15 Mart 1911','3 Mayıs 1893','24 Şubat 1910'], a:3,
+    h:'Türk edebiyatında ilk edebî bildiridir.'},
+
+  {t:'mcq', q:'Sembolizmin en önemli temsilcisi kimdir?',
+    o:['Ahmet Haşim','Tevfik Fikret','Şinasi','Fuzuli'], a:0,
+    h:'Fecr-i Ati dönemi şairidir.'},
+
+  {t:'mcq', q:'Millî Edebiyat hangi dergiyle başlamıştır?',
+    o:['Servet-i Fünun','Genç Kalemler','Tanzimat','Fecr-i Ati'], a:1,
+    h:'1911 yılında yayımlanmıştır.'},
+
+  {t:'mcq', q:'Reşat Nuri Güntekin hangi romanıyla tanınmıştır?',
+    o:['Mesnevi','Leyla ile Mecnun','Çalıkuşu','Şair Evlenmesi'], a:2,
+    h:'Anadolu\'nun dertlerini anlatan bir romandır.'},
+
+  {t:'mcq', q:'Millî Edebiyat döneminde hâkim ölçü hangisidir?',
+    o:['Aruz ölçüsü','Serbest ölçü','Mani','Hece ölçüsü'], a:3,
+    h:'Divan edebiyatının aksine tercih edilmiştir.'},
   // FILL
   {t:'fill', q:'Divan edebiyatında şairlerin eserlerini topladığı kitaba _____ denir.', a:'Divan', alts:['divan'], h:'Dönemin adı buradan gelmektedir.'},
   {t:'fill', q:'Sözlü edebiyatta cenaze törenlerinde söylenen şiire _____ denir.', a:'Sagu', alts:['sagu'], h:'Yuğ töreninde söylenir.'},
@@ -908,56 +1015,84 @@ const QS = [
 let done=[], corr=0, total=0;
 const LETTERS=['A','B','C','D'];
 
+// shuffledMaps[i] = array of original indices in new shuffled order
+let shuffledMaps = [];
+
+function shuffleArray(arr) {
+  const a = arr.slice();
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
 function buildQ(){
-  done=new Array(QS.length).fill(false); corr=0; total=0;
+  done = new Array(QS.length).fill(false);
+  shuffledMaps = [];
+  corr = 0; total = 0;
   updateSc();
-  const box=document.getElementById('qbox'); box.innerHTML='';
+  const box = document.getElementById('qbox');
+  box.innerHTML = '';
   document.getElementById('final').classList.remove('show');
 
-  QS.forEach((q,i)=>{
-    const c=document.createElement('div');
-    c.className='q-card'; c.id='qc'+i;
+  QS.forEach((q, i) => {
+    const c = document.createElement('div');
+    c.className = 'q-card';
+    c.id = 'qc' + i;
 
-    const badge=q.t==='mcq'
-      ?'<span class="q-badge mcq">Çoktan Seçmeli</span>'
-      :'<span class="q-badge fill">Boşluk Doldur</span>';
+    const badge = q.t === 'mcq'
+      ? '<span class="q-badge mcq">Çoktan Seçmeli</span>'
+      : '<span class="q-badge fill">Boşluk Doldur</span>';
 
-    let body='';
-    if(q.t==='mcq'){
-      body='<div class="opts">'+q.o.map((op,oi)=>
-        `<button class="opt" id="op${i}_${oi}" onclick="ckMCQ(${i},${oi})">
-          <span class="opt-letter">${LETTERS[oi]}</span>${op}
+    let body = '';
+    if (q.t === 'mcq') {
+      // Create shuffled index map: e.g. [2,0,3,1] means new slot 0 = original option 2
+      const origIndices = q.o.map((_, idx) => idx);
+      const shuffled = shuffleArray(origIndices);
+      shuffledMaps[i] = shuffled;
+
+      body = '<div class="opts">' + shuffled.map((origIdx, newIdx) =>
+        `<button class="opt" id="op${i}_${newIdx}" onclick="ckMCQ(${i},${newIdx})">
+          <span class="opt-letter">${LETTERS[newIdx]}</span>${q.o[origIdx]}
         </button>`
-      ).join('')+'</div>';
+      ).join('') + '</div>';
     } else {
-      body=`<input class="fill-inp" id="fi${i}" placeholder="Cevabı yazınız..." />
-            <button class="chk-btn" id="cb${i}" onclick="ckFill(${i})">Kontrol Et ✓</button>`;
+      shuffledMaps[i] = null;
+      body = `<input class="fill-inp" id="fi${i}" placeholder="Cevabı yazınız..." />
+              <button class="chk-btn" id="cb${i}" onclick="ckFill(${i})">Kontrol Et ✓</button>`;
     }
 
-    c.innerHTML=`${badge}<div class="q-text">${i+1}. ${q.q}</div>${body}<div class="fb" id="fb${i}"></div>`;
+    c.innerHTML = `${badge}<div class="q-text">${i+1}. ${q.q}</div>${body}<div class="fb" id="fb${i}"></div>`;
     box.appendChild(c);
 
-    if(q.t==='fill'){
-      setTimeout(()=>{
-        const inp=document.getElementById('fi'+i);
-        if(inp) inp.addEventListener('keydown',e=>{ if(e.key==='Enter') ckFill(i); });
-      },50);
+    if (q.t === 'fill') {
+      const inp = document.getElementById('fi' + i);
+      if (inp) inp.addEventListener('keydown', e => { if (e.key === 'Enter') ckFill(i); });
     }
   });
 }
 
-function ckMCQ(qi,ch){
-  if(done[qi]) return;
-  done[qi]=true;
-  const q=QS[qi]; const ok=ch===q.a;
-  if(ok) corr++; total++;
-  q.o.forEach((_,oi)=>{
-    const b=document.getElementById(`op${qi}_${oi}`);
-    b.disabled=true;
-    if(oi===q.a) b.classList.add('correct');
-    else if(oi===ch && !ok) b.classList.add('wrong');
-  });
-  showFb(qi,ok,q); updateSc(); checkEnd();
+function ckMCQ(qi, ch){
+  if (done[qi]) return;
+  done[qi] = true;
+  const q = QS[qi];
+  const map = shuffledMaps[qi]; // map[newIdx] = origIdx
+  const origChosen = map[ch];   // which original option did user pick
+  const ok = (origChosen === q.a);
+  if (ok) corr++;
+  total++;
+  // Find the new index of the correct answer
+  const correctNewIdx = map.indexOf(q.a);
+  for (let ni = 0; ni < map.length; ni++) {
+    const b = document.getElementById(`op${qi}_${ni}`);
+    b.disabled = true;
+    if (ni === correctNewIdx) b.classList.add('correct');
+    else if (ni === ch && !ok) b.classList.add('wrong');
+  }
+  showFb(qi, ok, q);
+  updateSc();
+  checkEnd();
 }
 
 function ckFill(qi){
@@ -972,16 +1107,18 @@ function ckFill(qi){
   showFb(qi,ok,q); updateSc(); checkEnd();
 }
 
-function showFb(qi,ok,q){
-  const fb=document.getElementById('fb'+qi);
-  const card=document.getElementById('qc'+qi);
+function showFb(qi, ok, q){
+  const fb = document.getElementById('fb' + qi);
+  const card = document.getElementById('qc' + qi);
   fb.classList.add('show');
-  if(ok){
-    fb.className='fb show fb-ok'; fb.textContent='✓ Doğru!';
+  if (ok) {
+    fb.className = 'fb show fb-ok';
+    fb.textContent = '✓ Doğru!';
     card.classList.add('ok');
   } else {
-    fb.className='fb show fb-err';
-    fb.innerHTML=`✗ Yanlış — Doğru cevap: <strong>${q.a}</strong> &nbsp;|&nbsp; İpucu: ${q.h}`;
+    fb.className = 'fb show fb-err';
+    const correctText = q.t === 'mcq' ? q.o[q.a] : q.a;
+    fb.innerHTML = `✗ Yanlış — Doğru cevap: <strong>${correctText}</strong> &nbsp;|&nbsp; İpucu: ${q.h}`;
     card.classList.add('err');
   }
 }
